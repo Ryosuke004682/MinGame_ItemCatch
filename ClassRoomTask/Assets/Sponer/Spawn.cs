@@ -8,10 +8,14 @@ public class Spawn : MonoBehaviour
 
     //デストロイされないので処理がどんどん重くなっていく、、
     //一定の高さまで行ったら消すようにする。
+    //また、Playerがアイテムを取得したら消す。
 
-    public int _spownInterval;
+    [SerializeField]
+    public int _spownInterval = 1;
     private float _elapsed;
-    
+
+    [SerializeField]
+    private GameObject _original = null;
 
     private void Update()
     {
@@ -20,10 +24,14 @@ public class Spawn : MonoBehaviour
         if(_elapsed > _spownInterval)
         {
             _elapsed = 0;
+            var item = Instantiate(_original);
+            var rb = item.GetComponent<Rigidbody>();
+            var x = Random.Range(-5 , 5);
+            var y = Random.Range(3 , 10);
+            var z = Random.Range(-5 , 5);
 
-            var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
-            cube.AddComponent<Rigidbody>();
+            rb.AddForce(x,y,z,ForceMode.Impulse);
+            
         }
 
     }

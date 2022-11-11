@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spownInterval: 1
+  _original: {fileID: 1326264035600856795, guid: 0608b33e3d3b31a41a53e0e1c378fbaf, type: 3}
